@@ -1,0 +1,67 @@
+Java RMI (Remote Method Invocation) Demo.
+Written by Gary Allen, University of Huddersfield
+
+A Java RMI Calculator.
+
+
+*** This demo was updated to Java 1.8 in February 2019
+
+
+
+The files:
+
+CalculatorInterface.java - the interface defining the remote services available
+CalculatorServer.java - the implementation of these remote services
+CalculatorClient.java - a very simple command-line test client
+SwingCalculatorClient.java - a more sophisticated SWING client
+
+
+To use this demo:
+
+1) Compile all files:
+
+	javac *.java
+	
+
+2) Start the rmiregistry
+
+	rmiregistry &
+
+
+3) Start the server:
+	java -classpath PathToCompiledClasses -Djava.rmi.server.codebase=file:PathToCompiledClasses/ CalculatorServer
+
+Note that PathToCompiledClasses is the full pathname to the directory containing
+the compiled version of the code, and that the trailing "/" IS essential on the 2nd parameter.
+If you are following these instructions then PathToCompiledClasses will be the full path
+name of the current directory where you are compiling and running this demo.
+
+For Example:
+	java -classpath /home/staff/gary/RMICalculator -Djava.rmi.server.codebase=file:/home/staff/gary/RMICalculator/ CalculatorServer
+
+If you are running the demo in an IDE such as IntelliJ then put the 
+	-classpath PathToCompiledClasses -Djava.rmi.server.codebase=file:PathToCompiledClasses/
+into the VM arguments on the run configuration for the server.
+
+
+4) In another shell tool, start the client:
+	java SwingCalculatorClient
+
+OR, if the client is running on a different machine to the server:
+	java SwingCalculatorClient <hostname>
+
+where <hostname> is replaced by the name of the machine that the server is
+running on, e.g.:
+	java SwingCalculatorClient dukas
+
+
+PLEASE remember to kill server and the rmiregistry processes so as not
+to leave loads of executing processes clogging up the machines!  To do
+this (in the window you ran the server in):
+
+	press "control-c" to kill the server
+	type "fg" to bring the rmiregistry process to the foreground
+	press "control-c" to kill the rmiregistry process
+
+
+

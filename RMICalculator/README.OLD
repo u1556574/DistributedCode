@@ -1,0 +1,71 @@
+Java RMI (Remote Method Invocation) Demo.
+Written by Gary Allen, University of Huddersfield
+
+A Java RMI Calculator.
+
+
+*** This demo was updated to Java 1.7 in December 2012
+*** BUT when tested in September 2014 with the latest version of Java
+*** it did not run from inside Eclipse but did run from the command line.
+*** Need more time to work out what went wrong.  For now, follow the
+*** instructions to run it from the command line OR work out why it didn't
+*** work in eclipse and then tell me!
+
+
+The files:
+
+CalculatorInterface.java - the interface defining the remote services available
+CalculatorServer.java - the implementation of these remote services
+CalculatorClient.java - a very simple command-line test client
+SwingCalculatorClient.java - a more sophisticated SWING client
+
+
+To use this demo:
+
+1) Compile all files:
+
+	javac *.java
+	
+
+2) Start the rmiregistry
+
+	rmiregistry &
+
+
+3) Start the server:
+	java -Djava.rmi.server.codebase=file:PathToCompiledInterfaceClass/ CalculatorServer
+
+Note that PathToCompiledInterfaceClass/  is the full pathname to the directory containing
+the compiled version of the CalculatorInterface class, and that the trailing "/" IS essential.
+If you are following these instructions then PathToCompiledInterfaceClass/ will be the full path
+name of the current directory where you are compiling and running this demo.
+
+For Example:
+	java -Djava.rmi.server.codebase=file:/home/staff2/gary/eclipseWorkspace/RMICalculator/bin/ CalculatorServer
+
+If you are running the demo in eclipse then put the 
+	-Djava.rmi.server.codebase=file:PathToCompiledInterfaceClass/
+into the VM arguments on the run configuration for the server.
+
+
+4) In another shell tool, start the client:
+
+	java SwingCalculatorClient
+OR, if the client is running on a different machine to the server:
+
+	java SwingCalculatorClient <hostname>
+where <hostname> is replaced by the name of the machine that the server is
+running on, e.g.:
+	java SwingCalculatorClient dukas
+
+
+PLEASE remember to kill server and the rmiregistry processes so as not
+to leave loads of executing processes clogging up the machines!  To do
+this (in the window you ran the server in):
+
+	press "control-c" to kill the server
+	type "fg" to bring the rmiregistry process to the foreground
+	press "control-c" to kill the rmiregistry process
+
+
+

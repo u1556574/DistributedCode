@@ -1,0 +1,38 @@
+Demo illustrating JavaIDL (using IOR in file trick)
+
+1. compile IDL
+
+	idlj -fall HelloWorld.idl
+
+
+2. Compile server client and stubs and skeletons
+   (NOTE - ignore any compilation warnings at this stage)
+
+	javac *.java HelloWorld/*.java
+
+
+3. start server
+
+	java HelloServer
+
+which will produce output similar to the following:
+
+stringified_ior = IOR:000000000000002c49444c3a647374632e6564752e61752f48656c6c6f576f726c642f48656c6c6f576f726c6449463a312e30000000000100000000000000300001000000000007627261686d7300009199000000000018afabcafe00000002320f648e000000080000000000000000
+HelloServer ready and waiting ...
+
+
+4. start client in another command tool
+
+	java HelloClient
+
+which will produce output similar to the following:
+
+stringified_ior = IOR:000000000000002c49444c3a647374632e6564752e61752f48656c6c6f576f726c642f48656c6c6f576f726c6449463a312e30000000000100000000000000300001000000000007627261686d7300009199000000000018afabcafe00000002320f648e000000080000000000000000
+
+Hello world !!
+
+
+5.  See whether you can get your client to connect to another student's server, by swapping the "server.ref" files which contain the IOR of the executing server process.
+
+
+

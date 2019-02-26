@@ -1,0 +1,56 @@
+A single-threaded server
+
+The java program Server1.java:
+
+    echoes strings received from client back to the client
+    shuts down on receipt of string "bye"
+
+It is possible to communicate with this server:
+
+    via a Java client application
+    by direct connection to the port e.g. using 'nc' (we can use this one easily)
+
+
+1.  Save Server1.java to your directory.
+
+2.  Compile using javac Server1.java
+
+3.  Start  server  by using  java  Server1
+
+4.  Open another command shell  (or move to another machine) and access via telnet:
+
+    nc    hostname   6001
+     
+     
+
+A multi-threaded server
+
+The java programs Server4.java and Client4.java:
+
+    starts a separate process thread to handle each client.
+    each thread terminates when the client sends a string "bye".
+    the server itself must be shut down by external means e.g. killing the process otherwise it will run indefinitely.
+
+
+1.  Save both files to your directory.
+
+2.  Compile both files.
+
+3.  Start server by using  java Server4  or  java Server4 <port-number> (the port number defaults to 6001)
+
+4.  Run some clients
+
+    Attach to your server via several clients launched from  different command windows.
+
+    Use nc <hostname> <portnumber> as a client.
+
+    Use java Client4  or  java Client4 <hostname> <port-number>  to use the java client.
+
+    The connection between server and client will continue as long as the client types in messages (which are echoed by the server).
+
+    Typing the string "bye" terminates the connection. 
+
+
+
+
+
