@@ -8,6 +8,7 @@ class CalculatorServer implements CalculatorInterface {
 	// this is a comment
 
 	public CalculatorServer() throws RemoteException{
+		// another comment
 		super();
 	}
 
