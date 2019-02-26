@@ -2,7 +2,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class CalculatorClient {
-	// this is a new comment
 
 	public static void main(String args[]) {
 		String hostname;
